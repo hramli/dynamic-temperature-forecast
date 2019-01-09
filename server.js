@@ -23,7 +23,8 @@ const server = http.createServer((req,res) => {
         else
         {
             req.on('data', body => {
-                var postLocation = querystring.parse(body.toString()).location;
+                var postData = body.toString();
+                var postLocation = querystring.parse(postData).location;
                 res.writeHead(303, {"Location": "/"+postLocation});
                 res.end();
             })
